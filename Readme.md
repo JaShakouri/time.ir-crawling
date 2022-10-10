@@ -6,7 +6,7 @@ crawling script for get holidays in years and month
 
 ## Screenshots
 
-![App Screenshot](https://github.com/JaShakouri/time.ir-crawling/blob/main/crawling-script.png)
+![App Screenshot](https://github.com/JaShakouri/time.ir-crawling/blob/master/crawling-script.png)
 
 
 ## Installation
