@@ -6,16 +6,18 @@ import requests
 import json as _JSON
 import html
 
-list_of_holiday_optimize = []
-list_of_year = [1401, 1402, 1403, 1404]
+list_of_year = [1401]  # 1402, 1403, 1404 You can add years
+# Days of the month that are usually holiday. This means weekends
 list_of_normal_holiday = [5, 6, 12, 13, 19, 20, 26, 27, 33, 34]
+
+list_of_holiday_optimize = []
 list_of_event_holiday = []
 
-url = 'https://www.time.ir/'
+url = 'https://www.time.ir/'  # Target site
 
 for year in list_of_year:
     print("crowling year: "+str(year))
-    for month in range(1, 13):
+    for month in range(1, 13):  # Range 1 to 12 per month in years, you can customize that
         print("crowling month: "+str(month) + " doing")
 
         list_of_event_holiday.clear()
@@ -53,7 +55,7 @@ for year in list_of_year:
             jsonString = _JSON.dumps(list_of_event_holiday)
             jsonFile = open("list_of_event_holiday-" +
                             str(res['year'])+"-"+str(res['month'])+".json", "w")
-            jsonFile.write(jsonString)
+            jsonFile.write(jsonString.encode("utf-8").decode('unicode-escape'))
             jsonFile.close()
 
         for objs in soup.findAll('div', class_='dayList'):
@@ -87,5 +89,5 @@ for year in list_of_year:
 
 jsonString = _JSON.dumps(list_of_holiday_optimize)
 jsonFile = open("list_of_holiday_optimize.json", "w")
-jsonFile.write(jsonString)
+jsonFile.write(jsonString.encode("utf-8").decode('unicode-escape'))
 jsonFile.close()
